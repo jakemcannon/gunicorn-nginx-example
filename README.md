@@ -7,7 +7,8 @@ of how I think things should be done to keep things simple.
 
 - [x] Get Python and Flask installed in a container
 - [x] Get Flask working with gunicorn
-- [] Get gunicorn working in a container
+- [x] Get gunicorn working in a container
+- [x] Start implementing `docker-compose`
 - [] Finally, introduce NGINX
 
 - [] Get this working on AWS with a default IP
