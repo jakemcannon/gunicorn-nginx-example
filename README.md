@@ -10,11 +10,9 @@ of how I think things should be done to keep things simple.
 - [x] Get gunicorn working in a container
 - [x] Start implementing `docker-compose`
 - [x] Finally, introduce NGINX
-
 - [] Get NGINX working on https, port `443`
 - [] Get this working on AWS with a default IP
 - [] Get this working on AWS with a subdomain
-
 - [] Create an EC2 with docker and docker-compose. Then you can probably launch it every time the server startes with `user_data`
 
 ^
@@ -23,6 +21,8 @@ It's a bit more subtle here. You want docker to be able to *automatically* run i
 2. Anytime the server crashes and reboots itself. I first found out about this in [this](https://betterprogramming.pub/how-to-use-docker-in-an-amazon-ec2-instance-5453601ec330)
 post. It suggests using something called `systemctl`
 
+### AWS
+- [x] install git
 
 ### Docker useage
 
