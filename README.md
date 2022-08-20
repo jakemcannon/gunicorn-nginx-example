@@ -10,10 +10,11 @@ of how I think things should be done to keep things simple.
 - [x] Get gunicorn working in a container
 - [x] Start implementing `docker-compose`
 - [x] Finally, introduce NGINX
-- [] Get NGINX working on https, port `443`
-- [] Get this working on AWS with a default IP
-- [] Get this working on AWS with a subdomain
-- [] Create an EC2 with docker and docker-compose. Then you can probably launch it every time the server startes with `user_data`
+- [x] Get this working on AWS with a default IP
+- [  ] Get NGINX working on https, port `443`
+- [  ] Create an AMI
+- [  ] Get this working on AWS with a subdomain
+- [  ] Create an EC2 with docker and docker-compose. Then you can probably launch it every time the server startes with `user_data`
 
 ^
 It's a bit more subtle here. You want docker to be able to *automatically* run in two scenarios.
@@ -21,17 +22,19 @@ It's a bit more subtle here. You want docker to be able to *automatically* run i
 2. Anytime the server crashes and reboots itself. I first found out about this in [this](https://betterprogramming.pub/how-to-use-docker-in-an-amazon-ec2-instance-5453601ec330)
 post. It suggests using something called `systemctl`
 
-### AWS
-- [x] install git
+# Docker usage
 
-### Docker useage
-
-There was some struggling with getting the domain to be accessible. I finally got it to work with the command below. Additionally, It was
-important that `--host=0.0.0.0` was in the Dockerfile when running flask. Essentially this `flask run --host=0.0.0.0` command if you were running
-the flask server locally. I'm not sure of the signifigance of this and how it will work with NGINX as well as a domain on AWS.
-
-
+### Locally
 ```
-docker run -p 5000:5000 flask-deployment-demo
+docker-compose up -d --build --scale app=3
 ```
+
+### On EC2
+WIP, but for now
+
+1. Create a new EC2 from scratch (TODO: create an AMI)
+2. Manually install git, docker, docker-compose and this repo (TODO: I believe an AMI also solves this)
+3. Manually set the correct user permissions for the above services and start the services (TODO: I believe an AMI also solves this)
+4. Set `docker-compose` up so that if it crashes it automatically reboots
+5. Figure out the correct commands for `user_data` and spin up a new EC2 to test
 
